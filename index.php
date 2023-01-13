@@ -1,56 +1,25 @@
-<!DOCTYPE html>
-<html lang="ko">
+<?php
+if (!defined('_INDEX_')) define('_INDEX_', true);
+if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>깔끄미청소메인</title>
-    <link rel="stylesheet" href="./css/default.css">
-    <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/font.css">
-    <link rel="stylesheet" href="./css/slick.css">
-    <link rel="stylesheet" href="./css/main.css">
-</head>
+if (G5_IS_MOBILE) {
+    include_once(G5_THEME_MOBILE_PATH.'/index.php');
+    return;
+}
 
-<body>
+if(G5_COMMUNITY_USE === false) {
+    include_once(G5_THEME_SHOP_PATH.'/index.php');
+    return;
+}
 
-    <!-- header -->
-    <div class="Wrap">
-        <div class="top_banner">
-            <div class="f_inner">
-                <span>부산 아파트입주청소 이사청소 깔끄미 : 부산 아파트입주청소 부산 양산 김해 기장 아파트입주청소 이사청소 오피스텔청소 상가청소 전문업체 깔끄미
-                </span>
-                <a href="/adm" target="_blank"><i class="xi-pause"></i></a>
-            </div>
-        </div>
-        <header id="header">
-            <div class="f_inner">
-                <h1>
-                    <a href="">
-                        <img src="./images/logo.png" alt="">
-                    </a>
-                </h1>
-                <nav class="gnb">
-                    <ul>
-                        <li><a href="">깔끄미청소 소개</a></li>
-                        <li><a href="">아파트입주청소</a></li>
-                        <li><a href="">이사/상가청소</a></li>
-                        <li><a href="">사무실청소</a></li>
-                        <li><a href="">청소갤러리</a></li>
-                        <li><a href="">질문과답변</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        <!-- header -->
+include_once(G5_THEME_PATH.'/head.php');
+?>
 
 
 
 
-
-        <!-- main -->
-        <main>
+<!-- main -->
+<main>
             <section id="mainVisual">
                 <div class="main_slide">
                     <div class="itm">
@@ -96,32 +65,32 @@
             <section id="mainLink">
                 <ul class="f_inner main_link">
                     <li>
-                        <a href="">
+                        <a href="<?php echo G5_THEME_URL ?>/doc/m011.php">
                             <span>icon</span>
                             <strong>깔끄미소개</strong>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="<?php echo G5_THEME_URL ?>/doc/m012.php">
                             <span>icon</span>
                             <strong>아파트입주청소</strong>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="<?php echo G5_THEME_URL ?>/doc/m013.php">
                             <span>icon</span>
                             <strong>이사/상가청소</strong>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="<?php echo G5_THEME_URL ?>/doc/m014.php">
                             <span>icon</span>
                             <strong>사무실청소</strong>
                         </a>
                     </li>
                     <li class="customer">
-                        <a href="">051-783-2317</a>
-                        <p>부산 양산 김해 기장 아파트입주청소 이사청소 오피스텔청소 상가청소 전문업체</p>
+                        <a href="tel:<?=$as_tel?>"><?=$as_tel?></a>
+                        <p><?=$as_description?></p>
                         <i class="xi-user-o"></i>
                     </li>
                 </ul>
@@ -133,7 +102,7 @@
                     <li>
                         <a href="">
                             <figure>
-                                <img src="./images/main_s011.jpg" alt="">
+                                <img src="<?php echo G5_THEME_URL ?>/images/main_s011.jpg" alt="">
                             </figure>
                             <strong>부산 아파트입주청소</strong>
                             <p>신축 아파트나 빌라 등 입주 전 상태에서의 실내 청소를 말하며
@@ -144,7 +113,7 @@
                     <li>
                         <a href="">
                             <figure>
-                                <img src="./images/main_s012.jpg" alt="">
+                                <img src="<?php echo G5_THEME_URL ?>/images/main_s012.jpg" alt="">
                             </figure>
                             <strong>부산 이사/상가청소</strong>
                             <p>신축 건물은 공사기간 중 쌓인 미세먼지/유해성분들이 곳곳에 산재해 있습니다.
@@ -154,7 +123,7 @@
                     <li>
                         <a href="">
                             <figure>
-                                <img src="./images/main_s013.jpg" alt="">
+                                <img src="<?php echo G5_THEME_URL ?>/images/main_s013.jpg" alt="">
                             </figure>
                             <strong>부산 사무실청소</strong>
                             <p>쾌적한 업무 환경을 만들고, 능률적인 업무를 수행하기 위해 반드시 필요한 청소 작업 입니다.
@@ -168,13 +137,11 @@
             <section id="mainCustomer">
                 <ul class="f_inner main_customer">
                     <li>
-                        <h3>깔끄미청소에서 알려드립니다. <a href=""><i class="xi-plus"></i></a></h3>
-                        <ul class="notice_con">
-                            <li>Lorem ipsum dolor sit amet consectetur.</li>
-                            <li>Lorem ipsum dolor sit amet consectetur.</li>
-                            <li>Lorem ipsum dolor sit amet consectetur.</li>
-                            <li>Lorem ipsum dolor sit amet consectetur.</li>
-                        </ul>
+                        <h3><?=$as_company?>에서 알려드립니다.
+                         <a href="/bbs/board.php?bo_table=notice"><i class="xi-plus"></i></a></h3>
+                       <!-- 최근게시물 -->
+
+                      <?php echo latest('theme/notice', 'notice', 4, 23);?>
                     </li>
                     <li>
                         <div class="map_case">
@@ -210,33 +177,7 @@
 
 
 
-        <!-- footer -->
-        <footer id="footer" class="d_bg">
-            <address>
-                부산광역시 북구 만덕2로 14 상가동 제314호
-            </address>
-            <ul class="f_con f_inner">
-                <li>대표자 : 전정선</li>
-                <li>사업자등록번호 : 606-11-45081</li>
-                <li>Tel : <a href="tel:051-331-3354">051-331-3354</a></li>
-                <li>e-mail : <a href="mailto:jjs3354@naver.com">jjs3354@naver.com</a></li>
-            </ul>
-            <span class="copy">
-                &copy; 부산 아파트입주청소 이사청소 금맥 All Rights Reserved.
-            </span>
-        </footer>
-        <!-- footer -->
-    </div>
 
 
-
-
-
-
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="./js/slick.min.js"></script>
-    <script src="./js/main.js"></script>
-
-</body>
-
-</html>
+<?php
+include_once(G5_THEME_PATH.'/tail.php');
